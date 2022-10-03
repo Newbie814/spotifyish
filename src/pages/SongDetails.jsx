@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable nonblock-statement-body-position */
 /* eslint-disable jsx-quotes */
 /* eslint-disable semi */
 import { useParams } from 'react-router-dom';
@@ -23,12 +25,20 @@ const SongDetails = () => {
   const { data: songData, isFetching: isFetchingSongDetails } =
     useGetSongDetailsQuery({ songid });
 
-  if (isFetchingSongDetails && isFetchinRelatedSongs)
+  if (isFetchingSongDetails || isFetchinRelatedSongs)
+    // eslint-disable-next-line curly
     return <Loader title='Searching song details' />;
 
-  console.log(songData);
-
   if (error) return <Error />;
+
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+
+  const handlePlayClick = (song, i) => {
+    dispatch(setActiveSong({ song, data, i }));
+    dispatch(playPause(true));
+  };
 
   return (
     <div className='flex flex-col'>
@@ -54,14 +64,14 @@ const SongDetails = () => {
           )}
         </div>
       </div>
-      {/* <RelatedSongs
+      <RelatedSongs
         data={data}
-        artistId={artistId}
+        // artistId={artistId}
         isPlaying={isPlaying}
         activeSong={activeSong}
         handlePauseClick={handlePauseClick}
         handlePlayClick={handlePlayClick}
-      /> */}
+      />
     </div>
   );
 };
