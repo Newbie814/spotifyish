@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-quotes */
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +11,9 @@ import { playPause, setActiveSong } from '../redux/features/playerSlice';
 import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 
 import 'swiper/css';
+// import 'swiper/swiper.min.css';
 import 'swiper/css/free-mode';
+// import 'swiper/modules/free-mode/free-mode.min.css';
 
 const TopChartCard = ({
   song,
