@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable comma-dangle */
 /* eslint-disable jsx-quotes */
 import React, { useState, useEffect } from 'react';
