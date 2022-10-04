@@ -1,18 +1,7 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable operator-linebreak */
 /* eslint-disable comma-dangle */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': 'f9df83b4b1mshc837a547be5fc50p13e477jsnc5fa5c5f33d1',
-//     'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com',
-//   },
-// };
-
-// fetch('https://shazam-core.p.rapidapi.com/v1/charts/world', options)
-//   .then((response) => response.json())
-//   .then((response) => console.log(response))
-//   .catch((err) => console.error(err));
 
 export const shazamCoreApi = createApi({
   reducerPath: 'shazamCoreApi',
@@ -21,7 +10,7 @@ export const shazamCoreApi = createApi({
     prepareHeaders: (headers) => {
       headers.set(
         'X-RapidAPI-Key',
-        'f9df83b4b1mshc837a547be5fc50p13e477jsnc5fa5c5f33d1'
+        import.meta.env.VITE_SHAZAM_CORE_RAPID_API_KEY
       );
       return headers;
     },
@@ -37,6 +26,9 @@ export const shazamCoreApi = createApi({
     getArtistDetails: builder.query({
       query: (artistId) => `/artists/details?artist_id=${artistId}`,
     }),
+    getSongsByCountry: builder.query({
+      query: (countryCode) => `/charts/country?country_code=${countryCode}`,
+    }),
   }),
 });
 
@@ -45,4 +37,5 @@ export const {
   useGetSongDetailsQuery,
   useGetSongRelatedQuery,
   useGetArtistDetailsQuery,
+  useGetSongsByCountryQuery,
 } = shazamCoreApi;
