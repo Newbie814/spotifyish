@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable jsx-quotes */
 import { useDispatch, useSelector } from 'react-redux';
 
