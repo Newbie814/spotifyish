@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { Error, Loader, SongCard } from '../components';
 import { useGetSongsByCountryQuery } from '../redux/services/shazamCore';
 
-const AroundYou = () => {
+const YourCountry = () => {
   const [country, setCountry] = useState('');
   const [loading, setLoading] = useState(true);
   const { activeSong, isPlaying } = useSelector((state) => state.player);
@@ -53,4 +53,4 @@ const AroundYou = () => {
   );
 };
 
-export default AroundYou;
+export default YourCountry;

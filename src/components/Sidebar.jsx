@@ -14,7 +14,7 @@ import { logo } from '../assets';
 
 const links = [
   { name: 'Discover', to: '/', icon: HiOutlineHome },
-  { name: 'Your Country', to: '/around-you', icon: HiOutlinePhotograph },
+  { name: 'Your Country', to: '/your-country', icon: HiOutlinePhotograph },
   { name: 'Top Artists', to: '/top-artists', icon: HiOutlineUserGroup },
   { name: 'Top Charts', to: '/top-charts', icon: HiOutlineHashtag },
 ];
