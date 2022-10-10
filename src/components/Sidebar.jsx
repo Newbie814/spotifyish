@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-quotes */
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   HiOutlineHashtag,
   HiOutlineHome,
@@ -19,22 +20,27 @@ const links = [
   { name: 'Top Charts', to: '/top-charts', icon: HiOutlineHashtag },
 ];
 
-const NavLinks = ({ handleClick }) => (
-  <div className='mt-10'>
-    {links.map((item) => (
-      <NavLink
-        key={item.name}
-        to={item.to}
-        className='flex flex-row justify-start items-center my-8 text-sm font-medium text-gray-400 hover:text-cyan-400'
-        onClick={() => handleClick && handleClick()}
-      >
-        <item.icon className='w-6 h-6 mr-2' />
-        {item.name}
-      </NavLink>
-    ))}
-  </div>
-);
-
+const NavLinks = ({ handleClick }) => {
+  const navigate = useNavigate();
+  return (
+    <div className='mt-10'>
+      {links.map((item) => (
+        <NavLink
+          key={item.name}
+          to={item.to}
+          className='flex flex-row justify-start items-center my-8 text-sm font-medium text-gray-400 hover:text-cyan-400'
+          onClick={() => {
+            handleClick && handleClick();
+            navigate(item.to);
+          }}
+        >
+          <item.icon className='w-6 h-6 mr-2' />
+          {item.name}
+        </NavLink>
+      ))}
+    </div>
+  );
+};
 const Sidebar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
